@@ -31,14 +31,31 @@ input {
   cursor: none !important;
 }
 
-/* Custom terminal scrollbar */
+/* Custom sleek scrollbar for both vertical (terminal) and horizontal (gallery) */
 .terminal-scroll::-webkit-scrollbar {
-  width: 4px;
+  width: 6px;
+  /* Sleek vertical width */
+  height: 6px;
+  /* Sleek horizontal height */
+}
+
+.terminal-scroll::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 8px;
+  margin-inline: 10px;
+  /* Keeps the horizontal scrollbar from hitting the very edges */
 }
 
 .terminal-scroll::-webkit-scrollbar-thumb {
-  background: #4ade80;
-  border-radius: 4px;
+  background: rgba(74, 222, 128, 0.4);
+  /* Semi-transparent green */
+  border-radius: 8px;
+  transition: background 0.3s ease;
+}
+
+.terminal-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(74, 222, 128, 0.8);
+  /* Brightens up when hovered */
 }
 
 /* Add this to your global CSS (index.css / App.css) */
