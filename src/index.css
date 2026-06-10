@@ -1,15 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,600;12..96,700;12..96,800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* ── Base reset ──────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+}
 
 body {
   margin: 0;
   background-color: #050505;
   color: white;
   overflow-x: hidden;
+  /* Bricolage Grotesque as the display face, DM Mono as the code voice */
+  font-family: 'Bricolage Grotesque', system-ui, sans-serif;
 }
 
-/* Custom scrollbar for a sleek look */
+/* Wire up DM Mono everywhere font-mono is used */
+code,
+pre,
+.font-mono,
+[class*="font-mono"] {
+  font-family: 'DM Mono', 'Fira Code', 'Cascadia Code', monospace;
+}
+
+/* ── Custom scrollbars ───────────────────────────────── */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -19,11 +36,32 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #333;
+  background: #1f1f1f;
   border-radius: 4px;
 }
 
-/* Hide default cursor for custom magnetic cursor */
+/* Terminal / gallery scroll variant */
+.terminal-scroll::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.terminal-scroll::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 8px;
+}
+
+.terminal-scroll::-webkit-scrollbar-thumb {
+  background: rgba(74, 222, 128, 0.35);
+  border-radius: 8px;
+  transition: background 0.3s ease;
+}
+
+.terminal-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(74, 222, 128, 0.7);
+}
+
+/* ── Cursor: hide default, custom magnetic replaces it ── */
 body,
 a,
 button,
@@ -31,34 +69,7 @@ input {
   cursor: none !important;
 }
 
-/* Custom sleek scrollbar for both vertical (terminal) and horizontal (gallery) */
-.terminal-scroll::-webkit-scrollbar {
-  width: 6px;
-  /* Sleek vertical width */
-  height: 6px;
-  /* Sleek horizontal height */
-}
-
-.terminal-scroll::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.02);
-  border-radius: 8px;
-  margin-inline: 10px;
-  /* Keeps the horizontal scrollbar from hitting the very edges */
-}
-
-.terminal-scroll::-webkit-scrollbar-thumb {
-  background: rgba(74, 222, 128, 0.4);
-  /* Semi-transparent green */
-  border-radius: 8px;
-  transition: background 0.3s ease;
-}
-
-.terminal-scroll::-webkit-scrollbar-thumb:hover {
-  background: rgba(74, 222, 128, 0.8);
-  /* Brightens up when hovered */
-}
-
-/* Add this to your global CSS (index.css / App.css) */
+/* ── Gradient animation (used elsewhere in the app) ──── */
 @keyframes gradient {
   0% {
     background-position: 0% center;
