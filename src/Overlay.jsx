@@ -242,7 +242,7 @@ export default function Overlay() {
                             {[
                                 { value: '3.88', label: 'GPA' },
                                 { value: '3+', label: 'Roles' },
-                                { value: '4', label: 'Projects' },
+                                //{ value: '4', label: 'Projects' },
                             ].map(({ value, label }) => (
                                 <div key={label} className="flex flex-col">
                                     <span className="text-white font-bold text-xl leading-none tracking-tight">{value}</span>
